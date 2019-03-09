@@ -1,0 +1,22 @@
+<link rel= "stylesheet" type= "text/css" href= "{{url_for('static',filename='styles.css') }}">
+
+<html>
+    <head>
+        <title>Nano Tipper</title>
+    </head>
+    <body>
+    <div class="navbar">
+        <div class="leftnav">Nano Tipper</div>
+        <div class="rightnav">
+            <ul class="navmenu">
+                <li><a href = '/'>Home</a></li>
+                <li><a href = '/'>Record Book</a></li>
+                <li><a href = '/'>Tutorials</a></li>
+                <li><a href = '/'>Contact</a></li>
+            </ul>
+        </div>
+
+    </div>
+        {% block content %}{% endblock %}
+    </body>
+</html>
