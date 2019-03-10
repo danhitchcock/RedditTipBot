@@ -1,5 +1,40 @@
 {% extends "template.html" %}
 
 {% block content %}
-    <h1>Coming soon!</h1>
+<div class="records">
+    <h1>
+        Tip and send Nano currency to your favorite Redditors!
+    </h1>
+    <br>
+    <div class="tableholder">
+        <table>
+            <tr>
+                <th colspan="2">Nano Tipper at a Glance</th>
+
+            </tr>
+            <tr>
+                <td>Total tipped:</td>
+                <td>{{ total_tipped }}</td>
+            </tr>
+            <tr>
+                <td>Registered Users:</td>
+                <td>{{ num_users }}</td>
+            </tr>
+            <tr>
+                <td>Activated Users:</td>
+                <td>{{ active_users }}</td>
+            </tr>
+            <tr>
+                <td>5 Day # of Tips:</td>
+                <td>{{ num_5day }}</td>
+            </tr>
+            <tr>
+                <td>5 Day Tip Total</td>
+                <td>{{ total_5day }}</td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
 {% endblock %}

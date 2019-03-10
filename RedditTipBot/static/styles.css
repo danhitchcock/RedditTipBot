@@ -18,6 +18,7 @@
 
 .rightnav {
     display: table;
+    font-size: 20px;
     font-weight: bold;
 
 }
@@ -47,4 +48,33 @@ li a:hover{
 
 body{
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.records {
+    text-align: center;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  color: white;
+  text-align: left;
+  padding: 8px;
+}
+
+td {
+    background-color: #4a90e2;
+}
+
+th{
+   background-color: #000034;
+}
+
+.tableholder {
+    display: inline-block;
 }
