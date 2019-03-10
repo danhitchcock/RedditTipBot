@@ -32,7 +32,7 @@ def index():
     results = mycursor.fetchall()
     active_users = len(results[0])
 
-    sql = "SELECT amount, sql_time FROM history WHERE action='send' AND hash IS NOT NULL AND recipient_username IS NOT NULL"
+    sql = "SELECT amount, sql_time FROM history WHERE action='send' AND hash IS NOT NULL AND recipient_username IS NOT NULL and amount IS NOT NULL"
     mycursor.execute(sql)
     nums = mycursor.fetchall()
     total_tipped = [int(item[0])/10**30 for item in nums]
