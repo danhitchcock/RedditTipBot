@@ -41,7 +41,8 @@ def index():
     total_5day=[]
     t0 = datetime.datetime.now()
     for item in nums:
-        if (item[1]-t0).days <5:
+
+        if (t0-item[1]).days < 5:
             total_5day.append(item[0])
     num_5day = len(total_5day)
     total_5day = [float(item)/10**30 for item in total_5day]
