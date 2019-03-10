@@ -10,7 +10,6 @@
 }
 
 .leftnav {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     font-weight: bold;
     float: left;
@@ -19,7 +18,6 @@
 
 .rightnav {
     display: table;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
 
 }
@@ -45,4 +43,8 @@ li a{
 
 li a:hover{
     background-color: #000034;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
 }
