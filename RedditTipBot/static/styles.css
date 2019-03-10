@@ -30,11 +30,11 @@
     overflow: hidden;
 }
 
-li {
+ul li {
   float: left;
 }
 
-li a{
+ul li a{
     display: block;
     color: white;
     text-align: center;
@@ -42,16 +42,20 @@ li a{
     text-decoration: none;
     }
 
-li a:hover{
+ul a:hover{
     background-color: #000034;
 }
 
 body{
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
 }
 
 .records {
     text-align: center;
+    display: inline-block;
 }
 
 table {
@@ -75,6 +79,19 @@ th{
    background-color: #000034;
 }
 
+.picture {
+    text-align: left;
+    display: inline-block;
+    vertical-align: top;
+
+}
+
+.container {
+    width: 1000px;
+    text-align: center;
+}
+
 .tableholder {
     display: inline-block;
+    width: 400px;
 }
