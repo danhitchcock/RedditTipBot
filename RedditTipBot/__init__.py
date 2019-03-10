@@ -25,12 +25,12 @@ def index():
     sql = "SELECT username FROM accounts"
     mycursor.execute(sql)
     results = mycursor.fetchall()
-    num_users = len(results[0])
+    num_users = len(results)
 
     sql = "SELECT username FROM accounts WHERE active=1"
     mycursor.execute(sql)
     results = mycursor.fetchall()
-    active_users = len(results[0])
+    active_users = len(results)
 
     sql = "SELECT amount, sql_time FROM history WHERE action='send' AND hash IS NOT NULL AND recipient_username IS NOT NULL and amount IS NOT NULL"
     mycursor.execute(sql)
