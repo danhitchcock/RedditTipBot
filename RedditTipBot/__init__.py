@@ -35,7 +35,7 @@ def index():
     sql = "SELECT amount, sql_time FROM history WHERE action='send' AND hash IS NOT NULL AND recipient_username IS NOT NULL and amount IS NOT NULL"
     mycursor.execute(sql)
     nums = mycursor.fetchall()
-    total_tipped = [int(item[0])/10**30 for item in nums]
+    total_tipped = [float(item[0])/10**30 for item in nums]
     total_tipped = sum(total_tipped)
 
     total_5day=[]
@@ -44,7 +44,7 @@ def index():
         if (item[1]-t0).days <5:
             total_5day.append(item[0])
     num_5day = len(total_5day)
-    total_5day = [int(item)/10**30 for item in total_5day]
+    total_5day = [float(item)/10**30 for item in total_5day]
     total_5day = sum(total_5day)
 
 
