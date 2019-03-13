@@ -61,6 +61,22 @@
 
         </table>
     </div>
+    <div class="container" style="font-size: 2px;">
+        <table>
+            <tr>
+                <th colspan=5>Biggest Tippers:</th>
+            </tr>
+            {% for item in records %}
+            <tr>
+                {% for name in item %}
+                <td>{{ name }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+
+
+        </table>
+    </div>
     <h2>
         To sign up, send a PM!
     </h2>

@@ -3,12 +3,14 @@ import mysql.connector
 import configparser
 import os
 import datetime
+import pandas as pd
+import numpy as np
 app = Flask(__name__)
 
 # access the sql library
 config = configparser.ConfigParser()
 config_file = os.path.join(app.root_path, 'tipper.ini')
-print(config_file)
+
 config.read(config_file)
 config.sections()
 sql_password = config['SQL']['sql_password']
@@ -58,13 +60,26 @@ def index():
     for recent in recents:
         recent['amount']=int(recent['amount'])/10**30
 
+    sql = "SELECT username, amount FROM history WHERE comment_or_message='comment' AND action='send' AND hash IS NOT NULL AND recipient_username IS NOT NULL and amount IS NOT NULL"
+    mycursor.execute(sql)
+    results = mycursor.fetchall()
+    results = [[item[0], float(item[1])/10**30] for item in results]
+    df = pd.DataFrame(results, columns=['username', 'amount'])
+    df = df.groupby('username').sum()
+    print(df)
+    records = []
+    records.append(df.sort_values('amount', ascending=False).index[:5])
+    print(records)
+
+
     args = {
         'num_users': num_users,
         'active_users': active_users,
         'total_tipped': total_tipped,
         'num_5day': num_5day,
         'total_5day': total_5day,
-        'recents': recents
+        'recents': recents,
+        'records': records
     }
     return render_template('index.html', **args)
 
