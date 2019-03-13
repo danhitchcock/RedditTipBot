@@ -5,7 +5,7 @@
     <h1>
         Tip and send Nano currency to your favorite Redditors!
     </h1>
-    <div class="tableholder">
+    <div class="container">
         <table>
             <tr>
                 <th colspan="2">Nano Tipper at a Glance</th>
@@ -32,6 +32,33 @@
                 <td>5 Day Tip Total</td>
                 <td>{{ total_5day | round }} Nano</td>
             </tr>
+
+        </table>
+    </div>
+        <div class="container">
+        <table>
+            <tr>
+                <th colspan=6>Recent Tips</th>
+            </tr>
+            <tr>
+                <th>Datetime</th>
+                <th>User</th>
+                <th>Recipient</th>
+                <th>Amount</th>
+                <th>Hash</th>
+                <th>Comment</th>
+            </tr>
+            {% for item in recents %}
+            <tr>
+                <td>{{ item.datetime }}</td>
+                <td>{{ item.user }}</td>
+                <td>{{ item.recipient }}</td>
+                <td>{{ item.amount}}</td>
+                <td><a href="https://nanocrawler.cc/explorer/block/"{{ item.hash }}>Nanocrawler</a></td>
+                <td>{{ item.comment }}</td>
+            </tr>
+            {% endfor %}
+
 
         </table>
     </div>

@@ -41,26 +41,45 @@ def index():
     total_5day=[]
     t0 = datetime.datetime.now()
     for item in nums:
-
         if (t0-item[1]).days < 5:
             total_5day.append(item[0])
     num_5day = len(total_5day)
     total_5day = [float(item)/10**30 for item in total_5day]
     total_5day = sum(total_5day)
 
+    sql = "SELECT reddit_time, username, recipient_username, amount, hash, comment_text FROM history WHERE comment_or_message='comment' AND action='send' AND hash IS NOT NULL AND recipient_username IS NOT NULL and amount IS NOT NULL ORDER BY id DESC limit 5"
+    mycursor.execute(sql)
+    results = mycursor.fetchall()
+    keys=['datetime', 'user', 'recipient', 'amount', 'hash', 'comment']
+    recents = []
+
+    for recent in results:
+        recents.append({key:item for key,item in zip(keys, recent)})
+    for recent in recents:
+        recent['amount']=int(recent['amount'])/10**30
 
     args = {
         'num_users': num_users,
         'active_users': active_users,
         'total_tipped': total_tipped,
         'num_5day': num_5day,
-        'total_5day': total_5day
+        'total_5day': total_5day,
+        'recents': recents
     }
     return render_template('index.html', **args)
 
 
 @app.route("/recordbook")
 def recordbook():
+
+    data = {
+        tips: ["zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips"],
+        totals: ["zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips"],
+        needs_help: ["zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips"],
+        most_clueless: ["zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips"],
+    }
+
+
     return render_template('recordbook.html')
 
 
