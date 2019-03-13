@@ -59,6 +59,7 @@ body{
 }
 
 table {
+    font-size: 15px;
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;

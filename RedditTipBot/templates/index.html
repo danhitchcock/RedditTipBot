@@ -35,27 +35,25 @@
 
         </table>
     </div>
-        <div class="container">
+        <div class="container" style="font-size: 2px;">
         <table>
             <tr>
-                <th colspan=6>Recent Tips</th>
+                <th colspan=5>Recent Tips</th>
             </tr>
             <tr>
                 <th>Datetime</th>
                 <th>User</th>
                 <th>Recipient</th>
                 <th>Amount</th>
-                <th>Hash</th>
-                <th>Comment</th>
+                <th>Transaction Hash</th>
             </tr>
             {% for item in recents %}
             <tr>
                 <td>{{ item.datetime }}</td>
-                <td>{{ item.user }}</td>
-                <td>{{ item.recipient }}</td>
+                <td><a href="https://www.reddit.com/u/{{ item.user|safe }}">{{ item.user }}</a></td>
+                <td><a href="https://www.reddit.com/u/{{ item.recipient|safe }}">{{ item.recipient }}</a></td>
                 <td>{{ item.amount}}</td>
-                <td><a href="https://nanocrawler.cc/explorer/block/"{{ item.hash }}>Nanocrawler</a></td>
-                <td>{{ item.comment }}</td>
+                <td><a href="https://nanocrawler.cc/explorer/block/{{ item.hash|safe }}">Nanocrawler</a></td>
             </tr>
             {% endfor %}
 
