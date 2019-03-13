@@ -71,26 +71,17 @@ def index():
 
 @app.route("/recordbook")
 def recordbook():
-
-    data = {
-        tips: ["zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips"],
-        totals: ["zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips"],
-        needs_help: ["zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips"],
-        most_clueless: ["zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips", "zily88 - 54 tips"],
-    }
-
-
     return render_template('recordbook.html')
 
 
 @app.route("/tutorials")
 def tutorials():
-    return render_template('index.html')
+    return render_template('tutorials.html')
 
 
 @app.route("/contact")
 def contact():
-    return render_template('index.html')
+    return render_template('contact.html')
 
 
 @app.route("/getaccount")
