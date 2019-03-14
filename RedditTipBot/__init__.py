@@ -68,7 +68,7 @@ def index():
     df = df.groupby('username').agg(['sum', 'max', 'mean', 'count'])
     print(df)
     records = []
-    records.append(["Biggest Tippers", zip(df['amount'].sort_values('sum', ascending=False).index[:5], df['amount'].sort_values('sum', ascending=False)['sum'])])
+    records.append(["Biggest Tippers", zip(df['amount'].sort_values('sum', ascending=False).index[:5], round(df['amount'].sort_values('sum', ascending=False), 2)['sum'])])
     records.append(["Largest Tip", zip(df['amount'].sort_values('max', ascending=False).index[:5], df['amount'].sort_values('max', ascending=False)['max'])])
     records.append(["Highest Average", zip(df['amount'].sort_values('mean', ascending=False).index[:5], df['amount'].sort_values('mean', ascending=False)['mean'])])
     records.append(["Most Tips", zip(df['amount'].sort_values('count', ascending=False).index[:5], df['amount'].sort_values('count', ascending=False)['count'])])
