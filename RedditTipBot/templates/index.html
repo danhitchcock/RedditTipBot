@@ -5,7 +5,7 @@
     <h1>
         Tip and send Nano currency to your favorite Redditors!
     </h1>
-    <div class="container">
+    <div class="records">
         <table>
             <tr>
                 <th colspan="2">Nano Tipper at a Glance</th>
@@ -39,6 +39,24 @@
     <div class="container" style="font-size: 2px;">
         <table>
             <tr>
+                <th colspan=6>LEADERBOARD</th>
+            </tr>
+            {% for item in records %}
+            <tr>
+                <th>{{ item[0] }}</th>
+                {% for name in item[1] %}
+                    <td>{{ name[0] }} - {{ name[1] }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+
+
+        </table>
+    </div>
+    <br>
+    <div class="container" style="font-size: 2px;">
+        <table>
+            <tr>
                 <th colspan=5>Recent Tips</th>
             </tr>
             <tr>
@@ -55,24 +73,6 @@
                 <td><a href="https://www.reddit.com/u/{{ item.recipient|safe }}">{{ item.recipient }}</a></td>
                 <td>{{ item.amount}}</td>
                 <td><a href="https://nanocrawler.cc/explorer/block/{{ item.hash|safe }}">Nanocrawler</a></td>
-            </tr>
-            {% endfor %}
-
-
-        </table>
-    </div>
-    <br>
-    <div class="container" style="font-size: 2px;">
-        <table>
-            <tr>
-                <th colspan=5>LEADERBOARD</th>
-            </tr>
-            {% for item in records %}
-            <tr>
-                <th>{{ item[0] }}</th>
-                {% for name in item[1] %}
-                    <td>{{ name }}</td>
-                {% endfor %}
             </tr>
             {% endfor %}
 
