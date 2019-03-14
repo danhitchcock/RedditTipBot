@@ -4,6 +4,7 @@ import configparser
 import os
 import datetime
 import pandas as pd
+import time
 import numpy as np
 app = Flask(__name__)
 
@@ -24,6 +25,7 @@ mycursor = mydb.cursor()
 
 @app.route("/")
 def index():
+    t1 = time.time()
     sql = "SELECT username FROM accounts"
     mycursor.execute(sql)
     results = mycursor.fetchall()
@@ -82,8 +84,10 @@ def index():
         'num_5day': num_5day,
         'total_5day': total_5day,
         'recents': recents,
-        'records': records
+        'records': records,
+        'time': time.time()-t1
     }
+    print(time.time()-t1)
     return render_template('index.html', **args)
 
 
