@@ -13,19 +13,19 @@
             </tr>
 
             <tr>
-                <td>Registered Users:</td>
+                <td>Registered Users</td>
                 <td>{{ num_users }}</td>
             </tr>
             <tr>
-                <td>Activated Users:</td>
+                <td>Activated Users</td>
                 <td>{{ active_users }}</td>
             </tr>
             <tr>
-                <td>Total tipped:</td>
+                <td>Total tipped</td>
                 <td>{{ total_tipped | round }} Nano</td>
             </tr>
             <tr>
-                <td>5 Day # of Tips:</td>
+                <td>5 Day # of Tips</td>
                 <td>{{ num_5day }} Tips</td>
             </tr>
             <tr>
@@ -65,12 +65,13 @@
     <div class="container" style="font-size: 2px;">
         <table>
             <tr>
-                <th colspan=5>Biggest Tippers:</th>
+                <th colspan=5>LEADERBOARD</th>
             </tr>
             {% for item in records %}
             <tr>
-                {% for name in item %}
-                <td>{{ name }}</td>
+                <th>{{ item[0] }}</th>
+                {% for name in item[1] %}
+                    <td>{{ name }}</td>
                 {% endfor %}
             </tr>
             {% endfor %}

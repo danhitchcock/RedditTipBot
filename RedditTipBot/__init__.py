@@ -40,7 +40,7 @@ def index():
     total_tipped = [float(item[0])/10**30 for item in nums]
     total_tipped = sum(total_tipped)
 
-    total_5day=[]
+    total_5day = []
     t0 = datetime.datetime.now()
     for item in nums:
         if (t0-item[1]).days < 5:
@@ -65,10 +65,13 @@ def index():
     results = mycursor.fetchall()
     results = [[item[0], float(item[1])/10**30] for item in results]
     df = pd.DataFrame(results, columns=['username', 'amount'])
-    df = df.groupby('username').sum()
+    df = df.groupby('username').agg(['sum', 'max', 'mean', 'count'])
     print(df)
     records = []
-    records.append(df.sort_values('amount', ascending=False).index[:5])
+    records.append(["Biggest Tippers", df['amount'].sort_values('sum', ascending=False).index[:5]])
+    records.append(["Largest Tip", df['amount'].sort_values('max', ascending=False).index[:5]])
+    records.append(["Highest Average", df['amount'].sort_values('mean', ascending=False).index[:5]])
+    records.append(["Most Tips", df['amount'].sort_values('count', ascending=False).index[:5]])
     print(records)
 
 
