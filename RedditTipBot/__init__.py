@@ -5,6 +5,7 @@ import os
 import datetime
 import pandas as pd
 import time
+import json
 import numpy as np
 app = Flask(__name__)
 
@@ -87,6 +88,7 @@ def index():
         'records': records,
         'time': time.time()-t1
     }
+    mydb.commit()
     print(time.time()-t1)
     return render_template('index.html', **args)
 
@@ -117,7 +119,8 @@ def getaccount():
         account = results[0][0]
     else:
         account = "Error: No account found for redditor."
-    return account
+    data = {'account': account}
+    return json.dumps(data)
 
 
 @app.route("/")

@@ -60,7 +60,7 @@
                 <th colspan=5>Recent Tips</th>
             </tr>
             <tr>
-                <th>Datetime</th>
+                <th>Your Local Time</th>
                 <th>User</th>
                 <th>Recipient</th>
                 <th>Amount</th>
@@ -68,7 +68,13 @@
             </tr>
             {% for item in recents %}
             <tr>
-                <td>{{ item.datetime }}</td>
+                <td>
+                    <script type="text/javascript">
+                        var utcDate = "{{ item.datetime }}";
+                        var localDate = new Date(utcDate);
+                        document.write(localDate.getFullYear(), "-", localDate.getMonth(), "-", localDate.getDay(), " ", localDate.getHours(), ":", localDate.getMinutes(), ":", localDate.getSeconds());
+                    </script>
+                </td>
                 <td><a href="https://www.reddit.com/u/{{ item.user|safe }}">{{ item.user }}</a></td>
                 <td><a href="https://www.reddit.com/u/{{ item.recipient|safe }}">{{ item.recipient }}</a></td>
                 <td>{{ item.amount}}</td>
